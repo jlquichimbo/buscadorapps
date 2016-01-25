@@ -21,11 +21,18 @@ $('#btnSearch').on('click', function (event) {
             
             nResults = data.response.numFound;
             timeResults = data.responseHeader.QTime;
+            var minutosSearch = round((timeResults / 60000), 2);
+            var segundosSearch = round((timeResults / 1000), 2) ;
             
             console.log(nResults);
             console.log(timeResults);
+            console.log(minutosSearch);
+            console.log(segundosSearch);
 
             //Envio el numero de resultados encontrados
+            $('#total_results').text(nResults);
+            $('#minutos_search').text(minutosSearch);
+            $('#segundos_search').text(segundosSearch);
             $('#nResults').text('Se han encontrado '+nResults+' resultados en '+timeResults+' milisegundos.');
             //Foreach para recorrer los datos
             $.each(data.response.docs, function (k, v) {
@@ -44,7 +51,7 @@ $('#btnSearch').on('click', function (event) {
             table += "</table>";
 
             //Enviamos la cadena html
-                            console.log(table);
+//                            console.log(table);
             $('#json_out').html(table);
 
 
@@ -56,6 +63,9 @@ $('#btnSearch').on('click', function (event) {
         }
     });
 });
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
 
 function getTable() {
     table = "";
