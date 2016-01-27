@@ -25,6 +25,8 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Responsive styles-->
         <link rel="stylesheet" href="css/responsive.css">
+        <!-- Estilos del timeline de resultados-->
+        <link rel="stylesheet" href="css/timeline.css">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,15 +113,15 @@
                         </div>
                         <!--end busqueda-->
                         <!--div de resultados-->
-                        <div id="nResults"></div>
-                        <div id="json_out"></div>
+                        <div id="timeline_resultados">
+                        </div>
                         <!--fin div resultados-->
-                        <div class="btn-container m60" align="center">
+                        <div class="btn-container m60 col-md-12" align="center">
                             <a href="#" class="active wow fadeInLeft">home</a>
                             <a href="subscribe-form.html" class=" wow fadeInLeft">Subscribe now</a>
                             <a href="contact.html" class="wow fadeInRight">Contact us</a>
                         </div>
-                        <div align="center">
+                        <div align="center" class="col-md-12">
 
                             <ul class="list-inline socail-link" align="center">
                                 <li><a href="#"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
@@ -129,7 +131,7 @@
                                 <li><a href="#"><i class="fa fa-instagram wow fadeInRight" data-wow-delay="1.1s"></i></a></li>
                             </ul>
                         </div>
-                        <div class="copyright text-center white">
+                        <div class="copyright text-center white col-md-12">
                             <p>&copy; Designed by 
                                 <a href="https://www.facebook.com/jOshE091" target="_blank">Jose</a> and developed by 
                                 <a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>

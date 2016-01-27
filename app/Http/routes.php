@@ -24,7 +24,7 @@ Route::get('edad2/{edad?}', function ($edad  = 20) {
     return 'Mi edad es '.$edad;
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 //Referenciando a controlador
