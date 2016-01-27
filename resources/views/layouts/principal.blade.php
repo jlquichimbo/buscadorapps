@@ -40,28 +40,11 @@
             <header id="header" class="parallax1">
                 <div class="container">
                     <div class="row ">
-                        <div class="wrapper-inner text-center">
-                            <div class="heading-content">
-                                <h2 class="title wow bounceInLeft" >Encuentra tu plan de estudios</h2>
-                                <p class="wow bounceInRight" data-wow-delay=".3s">Planes de estudios de nuestra Universidad, por periodo de estudios, titulación, componentes, y más. <br> Suscríbete para guardar tus favoritos.</p>
-                            </div>
-                            <!-- start timer, reference to js/countdown.js -->
-                            @yield('counter')
-                            <!-- end timer -->
-
-                            <!--campo de busquedas-->
-                            @yield('busqueda')
-
-                        </div>
-                        <!--end busqueda-->
-                        <!--div de resultados-->
-                        <div id="timeline_resultados">
-                        </div>
-                        <!--fin div resultados-->
+                        @yield('content')
                         <div class="btn-container m60 col-md-12" align="center">
                             <a href="#" class="active wow fadeInLeft">home</a>
-                            <a href="subscribe-form.html" class=" wow fadeInLeft">Subscribe now</a>
-                            <a href="contact.html" class="wow fadeInRight">Contact us</a>
+                            <a href="suscribe" class=" wow fadeInLeft">Subscribe now</a>
+                            <a href="contact" class="wow fadeInRight">Contact us</a>
                         </div>
                         <div align="center" class="col-md-12">
 
@@ -82,6 +65,9 @@
                     </div> <!-- wrapper-inner end -->
                 </div> <!-- row end -->
         </div> <!-- container-fluid end -->
+
+
+
     </header>
 </div>
 
