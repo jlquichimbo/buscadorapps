@@ -10,7 +10,7 @@ $('#btnSearch').on('click', function (event) {
     event.preventDefault();//Para que no redirecciones a otro lado
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
-        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&wt=json',
+        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&wt=json&rows=1',
         type: 'GET',
         dataType: "json",
         jsonp: 'json.wrf',
@@ -40,7 +40,8 @@ $('#btnSearch').on('click', function (event) {
             var i = 1;
             $.each(data.response.docs, function (k, v) {
                 var keyWords = splitKeywords(v.keywords);
-                console.log(keyWords);
+//                console.log(keyWords);
+//                console.log(v.content);
                 //Resultados impares a la izquierda y pares a la derecha
                 if (i % 2 != 0) {//impar
                     timeline += '<li>';
@@ -52,10 +53,19 @@ $('#btnSearch').on('click', function (event) {
                     timeline += '           <h4>' + v.title + '</h4>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-body">';
-                    timeline += '           <p>' + v.subject + '</p>';
+                    timeline += '           <div class="body-conent col-md-10">';
+                    timeline += '            <p>' + v.subject + '</p>';
+                    timeline += '            <p><b>Titulación: </b>' + keyWords.titulacion + '</p>';
+                    timeline += '            <p><b>Componente: </b>' + keyWords.componentName + '</p>';
+                    timeline += '            <p><b>Autor: </b>' + v.author + '</p>';
+                    timeline += '           </div>';
+                    timeline += '           <div class="body-pdf col-md-2">';
+                    timeline += '               <img class="imgpdf" src="images/pdf-icon.png"/>';
+                    timeline += '               <a href="'+v.content+'">Dercargar PDF <a/>';
+                    timeline += '           </div>';
                     timeline += '       </div>';
-                    timeline += '       <div class="timeline-footer">';
-                    timeline += '           <p>' + v.content_type + '</p>';
+                    timeline += '       <div class="timeline-footer col-md-12">';
+                    timeline += '           <p>' + keyWords.periodo + '</p>';
                     timeline += '       </div>';
                     timeline += '   </div>';
                     timeline += '</li>';
@@ -69,10 +79,18 @@ $('#btnSearch').on('click', function (event) {
                     timeline += '           <h4>' + v.title + '</h4>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-body">';
-                    timeline += '           <p>' + v.subject + '</p>';
+                    timeline += '           <div class="body-conent col-md-10">';
+                    timeline += '            <p>' + v.subject + '</p>';
+                    timeline += '            <p><b>Titulación: </b>' + keyWords.titulacion + '</p>';
+                    timeline += '            <p><b>Componente: </b>' + keyWords.componentName + '</p>';
+                    timeline += '            <p><b>Autor: </b>' + v.author + '</p>';
+                    timeline += '           </div>';
+                    timeline += '           <div class="body-pdf col-md-2">';
+                    timeline += '               <img class="imgpdf" src="images/pdf-icon.png"/>';
+                    timeline += '           </div>';
                     timeline += '       </div>';
-                    timeline += '       <div class="timeline-footer">';
-                    timeline += '           <p>' + v.content_type + '</p>';
+                    timeline += '       <div class="timeline-footer col-md-12">';
+                    timeline += '           <p>' + keyWords.periodo + '</p>';
                     timeline += '       </div>';
                     timeline += '   </div>';
                     timeline += '</li>';
@@ -94,6 +112,21 @@ $('#btnSearch').on('click', function (event) {
         }
     });
 });
+
+function convertPdf(data){
+    console.log('Convirtiendo a PDF');
+    var file = new Blob([data], {type: 'application/pdf'});
+    var fileURL = window.URL.createObjectURL(file);
+    var a = $("<a/>", {
+      "href": fileURL,
+      "download": data.name || "detailPDF"
+    }).html('download!').appendTo('body');
+    a.click();
+    $(window).on('focus', function(e) {
+      $('a').remove();
+    });
+    return a;
+}
 function round(value, decimals) {
     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }
@@ -105,7 +138,8 @@ function getTimeline() {
     return timeline;
 }
 
-function splitKeywords(arrayKeyword) {
+function splitKeywords(keywords) {
+    var arrayKeyword = keywords.toString().split(",");
     var keyWords = {
     };
     keyWords.institucion = arrayKeyword[0];
