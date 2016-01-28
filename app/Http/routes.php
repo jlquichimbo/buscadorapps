@@ -23,10 +23,14 @@ Route::get('suscribe', function () {
 Route::get('contact', function () {
     return view('contact');
 });
+Route::get('createuser', function () {
+    return view('createuser');
+});
 
 //Referenciando a controlador
 //Route::get('name/{nombre}', 'PruebaController@nombre');
 Route::resource('busqueda', 'BusquedaController');
+Route::resource('usuario', 'UsuarioController');
 Route::resource('login', 'LoginController');
 
 

@@ -40,7 +40,7 @@
                                 <div class="input-group-btn">
                                     <div class="btn-group" role="group">
                                         <div class="dropdown dropdown-lg">
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                                            <button type="button" class="btn btn-default dropdown-toggle wow bounceInRight" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                                             <div class="dropdown-menu dropdown-menu-right" role="menu">
                                                 <form class="form-horizontal" role="form">
                                                     <div class="form-group">
@@ -65,7 +65,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <button id="btnSearch"  type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                        <button id="btnSearch"  type="button" class="btn btn-primary submit-input wow bounceInRight"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +80,8 @@
             <!--fin div resultados-->
             <div class="btn-container m60 col-md-12" align="center">
                 <a href="#" class="active wow fadeInLeft">home</a>
-                <a href="suscribe" class=" wow fadeInLeft">Subscribe now</a>
-                <a href="contact" class="wow fadeInRight">Contact us</a>
+                <a href="suscribe" class=" wow fadeInLeft">Suscríbete</a>
+                <a href="contact" class="wow fadeInRight">Contáctanos</a>
             </div>
             <div align="center" class="col-md-12">
 

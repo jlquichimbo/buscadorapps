@@ -24,8 +24,8 @@
             <div class="clearfix"></div>
             <div class="btn-container m40">
                 <a href="index" class=" wow bounceInDown" data-wow-delay=".1s">Home</a>
-                <a href="subscribe" class=" wow bounceInDown" data-wow-delay=".3s">Subscribe now</a>
-                <a href="#" class="active wow bounceInDown" data-wow-delay=".8s">Contact us</a>
+                <a href="suscribe" class=" wow bounceInDown" data-wow-delay=".3s">Suscríbete</a>
+                <a href="#" class="active wow bounceInDown" data-wow-delay=".8s">Contáctanos</a>
             </div>
             <ul class="list-inline socail-link">
                 <li><a href="#"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
