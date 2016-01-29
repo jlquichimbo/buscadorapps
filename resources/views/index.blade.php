@@ -83,7 +83,7 @@
                 <a href="suscribe" class=" wow fadeInLeft">Suscríbete</a>
                 <a href="contact" class="wow fadeInRight">Contáctanos</a>
             </div>
-            <div align="center" class="col-md-12">
+<!--            <div align="center" class="col-md-12">
 
                 <ul class="list-inline socail-link" align="center">
                     <li><a href="#"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
@@ -92,11 +92,11 @@
                     <li><a href="#"><i class="fa fa-linkedin wow fadeInRight" data-wow-delay=".1s"></i></a></li>
                     <li><a href="#"><i class="fa fa-instagram wow fadeInRight" data-wow-delay="1.1s"></i></a></li>
                 </ul>
-            </div>
+            </div>-->
             <div class="copyright text-center white col-md-12">
-                <p>&copy; Designed by 
-                    <a href="https://www.facebook.com/jOshE091" target="_blank">Jose</a> and developed by 
-                    <a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>
+                <p>&copy; Designed and developed by 
+                    <a href="https://www.facebook.com/jOshE091" target="_blank">Jose Luis</a>
+                    <!--<a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>-->
                 <p>Copyright reserved to both.2016 </p>
             </div>
         </div> <!-- wrapper-inner end -->

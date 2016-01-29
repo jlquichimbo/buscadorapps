@@ -90,5 +90,15 @@ class UsuarioController extends Controller {
     public function destroy($id) {
 //
     }
+    public function facebook() {
+//
+        return "Logueado con fb";
+    }
+    
+    public function google() {
+        return 'Logueado con google';
+        
+//
+    }
 
 }

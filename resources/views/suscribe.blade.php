@@ -29,17 +29,17 @@
                 <a href="contact" class=" wow bounceInDown" data-wow-delay=".8s">Contáctanos</a>
             </div>
             <ul class="list-inline socail-link">
-                <li><a href="#"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
+                <li><a href="{{url("social/facebook")}}"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter wow fadeInRight" data-wow-delay=".4s"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus wow fadeInRight" data-wow-delay=".8s"></i></a></li>
+                <li><a href="{{url("social/google")}}"><i class="fa fa-google-plus wow fadeInRight" data-wow-delay=".8s"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin wow fadeInRight" data-wow-delay=".1s"></i></a></li>
                 <li><a href="#"><i class="fa fa-instagram wow fadeInRight" data-wow-delay="1.1s"></i></a></li>
             </ul>
             <div class="copyright text-center white ">
-                <p>&copy; Designed by 
-                    <a href="https://www.behance.net/towkirbappy" target="_blank">Bappy</a> and developed by 
-                    <a href="https://www.behance.net/esrat91" target="_blank">Themeturn </a></p>
-                <p>Copyright reserved to both.2015 </p>
+                <p>&copy; Designed and developed by 
+                    <a href="https://www.facebook.com/jOshE091" target="_blank">Jose Luis</a>
+                    <!--<a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>-->
+                <p>Copyright reserved to both.2016 </p>
             </div>
         </div> <!-- wrapper-inner end -->
     </div> <!-- main-conainer end -->
