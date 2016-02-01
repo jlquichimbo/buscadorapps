@@ -54,7 +54,7 @@ Route::group(['middleware' => ['web']], function () {
     //
     Route::auth();
 
-    Route::get('admin', 'LoginController@index');
     Route::get('social/{provider?}', 'SocialController@getSocialAuth');
     Route::get('social/callback/{provider?}', 'SocialController@getSocialAuthCallback');
+    Route::get('admin', 'LoginController@index');
 });
