@@ -34,7 +34,7 @@ Route::get('createuser', function () {
 //Route::get('name/{nombre}', 'PruebaController@nombre');
 Route::resource('busqueda', 'BusquedaController');
 Route::resource('usuario', 'UsuarioController');
-Route::resource('login', 'LoginController');
+//Route::resource('login', 'LoginController');
 
 //Social Login
 //Route::get('social/{provider?}', 'SocialController@getSocialAuth');
