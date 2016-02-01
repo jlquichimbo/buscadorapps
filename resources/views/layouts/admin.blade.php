@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Starter</title>
+        <title>Plans Admin</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
@@ -23,6 +23,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Theme style -->
         <!--<link rel="stylesheet" href="AdminLTE.min.css">-->
         {!!Html::style('css/AdminLTE.min.css')!!}
+        {!!Html::style('css/style.css')!!}
+        <!--<link rel="stylesheet" href="css/style.css">-->
+        <!-- Responsive styles-->
+        {!!Html::style('css/responsive.css')!!}
+        <!--<link rel="stylesheet" href="css/responsive.css">-->
+        <!-- Estilos del timeline de resultados-->
+        {!!Html::style('css/timeline.css')!!}
 
         <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
               page. However, you can choose any other skin. Make sure you
@@ -223,11 +230,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 @endif
 
 
-                            <!-- Control Sidebar Toggle Button -->
-                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                            </li>
-                        </ul>
+                                <!-- Control Sidebar Toggle Button -->
+                                <li>
+                                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                                </li>
+                            </ul>
                     </div>
                 </nav>
             </header>
@@ -243,29 +250,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <p>{{ Auth::user()->name }}</p>
                             <!-- Status -->
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
 
                     <!-- search form (Optional) -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
+                    <!--                    <form action="#" method="get" class="sidebar-form">
+                                            <div class="input-group">
+                                                <input type="text" name="q" class="form-control" placeholder="Search...">
+                                                <span class="input-group-btn">
+                                                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                                </span>
+                                            </div>
+                                        </form>-->
                     <!-- /.search form -->
 
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
-                        <li class="header">HEADER</li>
+                        <li class="header">MEN&Uacute;</li>
                         <!-- Optionally, you can add icons to the links -->
-                        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Favoritos</span></a></li>
+                        <li><a href="#"><i class="fa fa-link"></i> <span>Busquedas recientes</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
@@ -283,18 +290,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Page Header
-                        <small>Optional description</small>
-                        {{ Auth::user()->name }}
+                        Administrador de b&uacute;squedas
+                        <small>Guarda tus favoritos seg&uacute;n los planes que buscas</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                        <li class="active">Here</li>
-                    </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
+                    @yield('content')
 
                     <!-- Your Page Content Here -->
 
@@ -305,10 +308,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <footer class="main-footer">
                 <!-- To the right -->
                 <div class="pull-right hidden-xs">
-                    Anything you want
+                    Gracias por usar mi buscador
                 </div>
                 <!-- Default to the left -->
-                <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+                <div class="copyright text-center white col-md-12">
+                    <p>&copy; Designed and developed by 
+                        <a href="https://www.facebook.com/jOshE091" target="_blank">Jose Luis</a>
+                        <!--<a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>-->
+                    <p>Copyright reserved to both.2016 </p>
+                    <!--<strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.-->
+                </div>
             </footer>
 
             <!-- Control Sidebar -->
@@ -388,6 +397,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- AdminLTE App -->
         <!--<script src="dist/js/app.min.js"></script>-->
         {!!Html::script('assets/js/app.min.js')!!}
+
+        {!!Html::script('js/planes.js')!!}
+
 
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.

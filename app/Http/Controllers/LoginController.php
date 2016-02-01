@@ -26,7 +26,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('usuario.home');
+        return view('usuario.search');
     }
 
     /**

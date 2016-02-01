@@ -1,12 +1,10 @@
-@extends('layouts.principal')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <div class="row ">
-        <div class="wrapper-inner text-center">
-            <div class="heading-content">
-                <h2 class="title wow bounceInLeft" >Encuentra tu plan de estudios</h2>
-                <p class="wow bounceInRight" data-wow-delay=".3s">Planes de estudios de nuestra Universidad, por periodo de estudios, titulación, componentes, y más. <br> Suscríbete para guardar tus favoritos.</p>
-            </div>
+        <!--<div class="wrapper-inner text-center">-->
+        <div class="text-center">
+        <div class="text-center">
             <!-- start timer, reference to js/countdown.js -->
             <div id="timer" class=" wow flipInY">
                 <span class="countdown_row countdown_show3">
@@ -36,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="input-group" id="adv-search">
-                                <input id="inputSearch" type="text" class="form-control" placeholder="Busqueda de planes" />
+                                <input style="color: #006699; font-weight: bold;" id="inputSearch" type="text" class="form-control" placeholder="Busqueda de planes" />
                                 <div class="input-group-btn">
                                     <div class="btn-group" role="group">
                                         <div class="dropdown dropdown-lg">
@@ -74,34 +72,12 @@
                 </div>
             </div>
             <!--end busqueda-->
+            <!--div de resultados-->
+            <div id="timeline_resultados" align='LEFT'>
+            </div>
+            <!--fin div resultados-->
+           
         </div> <!-- wrapper-inner end -->
-
-        <!--div de resultados-->
-        <div id="timeline_resultados">
-        </div>
-        <!--fin div resultados-->
-        <div class="btn-container m60 col-md-12" align="center">
-            <a href="#" class="active wow fadeInLeft">home</a>
-            <a href="suscribe" class=" wow fadeInLeft">Suscríbete</a>
-            <a href="contact" class="wow fadeInRight">Contáctanos</a>
-        </div>
-        <!--            <div align="center" class="col-md-12">
-        
-                        <ul class="list-inline socail-link" align="center">
-                            <li><a href="#"><i class="fa fa-facebook wow fadeInRight" data-wow-delay=".2s"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter wow fadeInRight" data-wow-delay=".4s"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus wow fadeInRight" data-wow-delay=".8s"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin wow fadeInRight" data-wow-delay=".1s"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram wow fadeInRight" data-wow-delay="1.1s"></i></a></li>
-                        </ul>
-                    </div>-->
-        <div class="copyright text-center white col-md-12">
-            <p>&copy; Designed and developed by 
-                <a href="https://www.facebook.com/jOshE091" target="_blank">Jose Luis</a>
-                <!--<a href="https://www.facebook.com/PattyVelez11" target="_blank">Paty </a></p>-->
-            <p>Copyright reserved to both.2016 </p>
-        </div>
     </div> <!-- row end -->
 </div> <!-- container-fluid end -->
 @stop
-

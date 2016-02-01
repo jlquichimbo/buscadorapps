@@ -25,7 +25,6 @@
         {!!Html::style('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')!!}
         <!-- Theme style -->
         <!--<link rel="stylesheet" href="AdminLTE.min.css">-->
-        {!!Html::style('css/AdminLTE.min.css')!!}
 
         <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
               page. However, you can choose any other skin. Make sure you
@@ -46,6 +45,7 @@
         {!!Html::style('css/responsive.css')!!}
         <!--<link rel="stylesheet" href="css/responsive.css">-->
         <!-- Estilos del timeline de resultados-->
+        {!!Html::style('css/AdminLTE.min.css')!!}
         {!!Html::style('css/timeline.css')!!}
         <!--<link rel="stylesheet" href="css/timeline.css">-->
 

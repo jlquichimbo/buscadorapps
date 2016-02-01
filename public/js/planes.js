@@ -10,7 +10,7 @@ $('#btnSearch').on('click', function (event) {
     event.preventDefault();//Para que no redirecciones a otro lado
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
-        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&wt=json&rows=1',
+        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&wt=json',
         type: 'GET',
         dataType: "json",
         jsonp: 'json.wrf',
