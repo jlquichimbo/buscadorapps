@@ -45,9 +45,9 @@ class SocialController extends Controller {
         $authUser = $this->findOrCreateUser($user);
  
         Auth::login($authUser, true);
- 
-        return redirect()->route('index');
         
+        return redirect()->route('usuario.home');
+ 
 //        $user = Socialite::driver($provider)->user();
 //        if ($user) {
 //            dd($user);
@@ -62,7 +62,7 @@ class SocialController extends Controller {
      * @param $user
      * @return User
      */
-    private function findOrCreateUser($user)
+    private function findOrCreateUser1($user)
     {
         $authUser = User::where('email', $user->email)->first();
  
@@ -74,7 +74,7 @@ class SocialController extends Controller {
             'name' => $user->name,
             'email' => $user->email,
             'social' => 1,
-            'avatar' => $user->avatar
+            'type' => 'member'
         ]);
     }
 

@@ -34,11 +34,11 @@ return [
     'google' => [
         'client_id' => '218629750507-arenfb8ud375tl25kb4jlhje57bfrkfq.apps.googleusercontent.com',
         'client_secret' => 'SRfW3U9-KhzMDrVtUGHkiWTf',
-        'redirect' => 'http://localhost:8080/busqueda',
+        'redirect' => 'http://localhost:8000/admin',
     ],
     'facebook' => [
         'client_id' => '974040322673809',
         'client_secret' => 'c48116a75d0e9b4307b24a9677fd493e',
-        'redirect' => 'http://localhost:8080/busqueda',
+        'redirect' => 'http://localhost:8000/admin',
     ],
 ];
