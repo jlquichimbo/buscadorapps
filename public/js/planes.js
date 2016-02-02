@@ -1,4 +1,5 @@
-console.log("Bienvenidos");
+totalResults = 0;
+q = '';
 
 $('#btnSearch').on('click', function (event) {
     console.log('extrayendo datos');
@@ -6,19 +7,30 @@ $('#btnSearch').on('click', function (event) {
 //    $( "#timeline_resultados" ).focus();
 
     search_text = $('#inputSearch').val();
+    q = search_text;
 
     event.preventDefault();//Para que no redirecciones a otro lado
+    searchPlanes(search_text, 0, null);
+
+});
+
+function searchPlanes(q, start, params, isPage) {
+    $('.loader').show();
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
-        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&wt=json',
+        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start,
         type: 'GET',
         dataType: "json",
         jsonp: 'json.wrf',
         async: 'true',
         success: function (data) {
+            $('.loader').hide();
+
             //Bajamos el scroll hacia los resultados
             $(window).scrollTop($('#timeline_resultados').offset().top);
             $('#timeline_resultados').show(1000);
+            $('#pagination_div').show(1000);
+
 
 //            console.log(data.response.docs);
 
@@ -26,6 +38,7 @@ $('#btnSearch').on('click', function (event) {
             timeline = getTimeline();
 
             nResults = data.response.numFound;
+            totalResults = nResults; // Asignamos a la variable global
             timeResults = data.responseHeader.QTime;
             var minutosSearch = round((timeResults / 60000), 2);
             var segundosSearch = round((timeResults / 1000), 2);
@@ -61,7 +74,7 @@ $('#btnSearch').on('click', function (event) {
                     timeline += '           </div>';
                     timeline += '           <div class="body-pdf col-md-2">';
                     timeline += '               <img class="imgpdf" src="images/pdf-icon.png"/>';
-                    timeline += '               <a href="'+v.content+'">Dercargar PDF <a/>';
+                    timeline += '               <a href="#">Dercargar PDF <a/>';
                     timeline += '           </div>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-footer col-md-12">';
@@ -87,6 +100,7 @@ $('#btnSearch').on('click', function (event) {
                     timeline += '           </div>';
                     timeline += '           <div class="body-pdf col-md-2">';
                     timeline += '               <img class="imgpdf" src="images/pdf-icon.png"/>';
+                    timeline += '               <a href="#">Dercargar PDF <a/>';
                     timeline += '           </div>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-footer col-md-12">';
@@ -101,8 +115,13 @@ $('#btnSearch').on('click', function (event) {
 
             //Enviamos la cadena html
 //            console.log(timeline);
-            $('#timeline_resultados').html(timeline);
+            document.getElementById("timeline_resultados").innerHTML = timeline;
+//            $('#timeline_resultados').prepend(timeline);
 
+            //Llamamos al paginador si no es llamado desde un cambio de pagina
+            if (isPage != 1) {
+                getPaginator();
+            }
 
 
         },
@@ -111,19 +130,29 @@ $('#btnSearch').on('click', function (event) {
 
         }
     });
-});
 
-function convertPdf(data){
+}
+
+function getNewPage(pageNumber) {
+    
+    start = (pageNumber * 10) - 10;
+    console.log(pageNumber);
+    console.log(start);
+    searchPlanes(q, start, null, 1);
+}
+
+
+function convertPdf(data) {
     console.log('Convirtiendo a PDF');
     var file = new Blob([data], {type: 'application/pdf'});
     var fileURL = window.URL.createObjectURL(file);
     var a = $("<a/>", {
-      "href": fileURL,
-      "download": data.name || "detailPDF"
+        "href": fileURL,
+        "download": data.name || "detailPDF"
     }).html('download!').appendTo('body');
     a.click();
-    $(window).on('focus', function(e) {
-      $('a').remove();
+    $(window).on('focus', function (e) {
+        $('a').remove();
     });
     return a;
 }

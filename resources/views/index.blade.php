@@ -76,16 +76,22 @@
             <!--end busqueda-->
         </div> <!-- wrapper-inner end -->
 
+        <!--div de loading-->
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <!--div de resultados-->
-        <div id="timeline_resultados">
+        <div id="timeline_resultados"></div>
+        <!--div de loading-->
+        <div class="loader">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <div class="pagination">
-            <a href="#" class="first" data-action="first">&laquo;</a>
-            <a href="#" class="previous" data-action="previous">&lsaquo;</a>
-            <input type="text" readonly="readonly" data-max-page="40" />
-            <a href="#" class="next" data-action="next">&rsaquo;</a>
-            <a href="#" class="last" data-action="last">&raquo;</a>
-        </div>
+        <!--div paginador-->
+        <div id="pagination_div" align='center'></div>
         <!--fin div resultados-->
         <div class="btn-container m60 col-md-12" align="center">
             <a href="#" class="active wow fadeInLeft">home</a>

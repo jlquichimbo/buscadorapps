@@ -141,43 +141,33 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
     <!-- jQuery 2.1.4 -->
-        <!--<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
     {!!Html::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')!!}
 
     <!-- Bootstrap 3.3.5 -->
-    <!--<script src="bootstrap/js/bootstrap.min.js"></script>-->
     {!!Html::script('assets/js/bootstrap.min.js')!!}
 
     <!-- AdminLTE App -->
-    <!--<script src="dist/js/app.min.js"></script>-->
     {!!Html::script('assets/js/app.min.js')!!}
 
-    <!--<script src="assets/js/bootstrap.min.js"></script>-->
     <!-- initialize jQuery Library -->
     {!!Html::script('js/jquery.js')!!}
-    <!--<script type="text/javascript" src="js/jquery.js"></script>-->
     <!-- Wow Animation -->
     {!!Html::script('js/wow.min.js')!!}
-    <!--<script type="text/javascript" src="js/wow.min.js"></script>-->
     <!-- Eeasing -->
     {!!Html::script('js/jquery.easing.1.3.js')!!}
-    <!--<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>-->
     <!-- Counter -->
     {!!Html::script('js/countdown.js')!!}
-    <!--<script type="text/javascript" src="js/countdown.js"></script>-->
     <!-- bxslider js -->
     {!!Html::script('/js/jquery.bxslider.min.js')!!}
-    <!--<script src="js/jquery.bxslider.min.js"></script>-->
     {!!Html::script('/js/jquery.backstretch.js')!!}
-    <!--<script src="js/jquery.backstretch.js"></script>-->
     {!!Html::script('js/planes.js')!!}
-    <!--<script src="js/planes.js"></script>-->
     <!-- Custom js -->
     {!!Html::script('js/custom.js')!!}
-    <!--<script type="text/javascript" src="js/custom.js"></script>-->
-    <!-- Google Map API Key Source -->
-    <!--<script src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
-
+    <!-- PAGINADOR-->
+    {!!Html::script('js/bootstrap-paginator.js')!!}
+    {!!Html::script('js/pagination.js')!!}
+<!--    {!!Html::script('https://cdnjs.cloudflare.com/ajax/libs/jquery-hashchange/v1.3/jquery.ba-hashchange.js')!!}
+    {!!Html::script('js/jquery.paging.min.js')!!}-->
 
 </body>
 </html>
