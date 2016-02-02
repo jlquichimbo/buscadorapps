@@ -98,7 +98,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="imgages/user_icon.png" class="img-circle" alt="User Image">
                                     <p>
                                         {{ Auth::user()->name }}
                                         <small>Member since {{ Auth::user()->created_at }}</small>

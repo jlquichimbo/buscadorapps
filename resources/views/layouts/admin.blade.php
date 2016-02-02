@@ -202,27 +202,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- Menu Toggle Button -->
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <!-- The user image in the navbar-->
-                                        <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                        <img src="images/user_icon.png" class="user-image" alt="User Image">
                                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                         <span class="hidden-xs">{{ Auth::user()->name }}</span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <!-- The user image in the menu -->
                                         <li class="user-header">
-                                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                            <img src="images/user_icon.png" class="img-circle" alt="User Image">
                                             <p>
                                                 {{ Auth::user()->name }}
-                                                <small>Member since {{ Auth::user()->created_at }}</small>
+                                                <small>Miembro desde {{ Auth::user()->created_at }}</small>
                                             </p>
                                         </li>
                                         <!-- Menu Footer-->
                                         <li class="user-footer">
                                             <div class="pull-left">
-                                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                                <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                             </div>
                                             <div class="pull-right">
                                                 <!--<a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>-->
-                                                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Salir</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -247,7 +247,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="images/user_icon.png" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
                             <p>{{ Auth::user()->name }}</p>
@@ -307,9 +307,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main Footer -->
             <footer class="main-footer">
                 <!-- To the right -->
-                <div class="pull-right hidden-xs">
+<!--                <div class="pull-right hidden-xs">
                     Gracias por usar mi buscador
-                </div>
+                </div>-->
                 <!-- Default to the left -->
                 <div class="copyright text-center white col-md-12">
                     <p>&copy; Designed and developed by 
