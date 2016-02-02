@@ -12,13 +12,17 @@
  */
 
 Route::get('busqueda', function () {
-    return view('index');
+    $keywords = DB::table('keywords')->lists('id', 'nombre');
+    return view('index', ['keywords' => $keywords]);
 });
 Route::get('/', function () {
-    return view('index');
+    $keywords = DB::table('keywords')->lists('nombre', 'id');
+    $keywords['-1'] = 'Seleccionar';
+    return view('index', ['keywords' => $keywords]);
 });
 Route::get('index', function () {
-    return view('index');
+    $keywords = DB::table('keywords')->lists('nombre', 'id');
+    return view('index', ['keywords' => $keywords]);
 });
 Route::get('suscribe', function () {
     return view('suscribe');

@@ -1,24 +1,48 @@
 totalResults = 0;
 q = '';
+keywords = '';
+author = '';
+contains = '';
 
-$('#btnSearch').on('click', function (event) {
+$('.btnSearch').on('click', function (event) {
     console.log('extrayendo datos');
 //    document.getElementById('timeline_resultados').focus();
 //    $( "#timeline_resultados" ).focus();
 
     search_text = $('#inputSearch').val();
+    keywords_val = $('#keywordSelect').val();
+    author_val = $('#authorInput').val();
+    contains_val = $('#containsInput').val();
     q = search_text;
+    keywords = keywords_val;
+    author = author_val;
+    contains = contains_val;
 
     event.preventDefault();//Para que no redirecciones a otro lado
-    searchPlanes(search_text, 0, null);
-
+    searchPlanes(q, 0, keywords, author, contains, 0);
 });
 
-function searchPlanes(q, start, params, isPage) {
+function searchPlanes(q, start, keywords, author, contains, isPage) {
     $('.loader').show();
+    url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start;
+    if (keywords != -1) {
+        keyword = $('#keywordSelect').children(':selected').text();
+//        escapeCharsKeywords(q);
+//        console.log(keyword);
+
+        url = 'http://j4loxa.com/serendipity/plan/browse?wt=json&start=' + start + '&fq=keywords:' + escapeCharsKeywords(q);
+    }
+    if (author) {
+        alert('author sent');
+        url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start + '&fq=author:' + author;
+
+    }
+    if (contains) {
+        alert('content sent');
+    }
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
-        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start,
+        url: url,
         type: 'GET',
         dataType: "json",
         jsonp: 'json.wrf',
@@ -134,11 +158,11 @@ function searchPlanes(q, start, params, isPage) {
 }
 
 function getNewPage(pageNumber) {
-    
+
     start = (pageNumber * 10) - 10;
     console.log(pageNumber);
-    console.log(start);
-    searchPlanes(q, start, null, 1);
+//    console.log(start);
+    searchPlanes(q, start, keywords, author, contains, 1);
 }
 
 
@@ -182,6 +206,25 @@ function splitKeywords(keywords) {
     return keyWords;
 
 
+
+}
+
+function escapeCharsKeywords(string) {
+    newQ = '';
+    /*symbols= + - && || ! ( ) { } [ ] ^ " ~ * ? : /  */
+    var symbols = ["+", "-", "&&", "||", "!", "(", ")", "{", "}", "[", "]", "^", '"', "~", "*", "?", ":", "/"];
+    $.each(symbols, function (i, value) {
+        index = string.indexOf(value);
+        if(index != -1){//si se encontro una ocurrencia en el string
+            newQ = string.replace(value, "+"+value+"+");//Agregamos los simbolos + para excapar los caracteres
+            console.log(newQ);
+            return newQ;
+        }else{
+            newQ = string;
+        }
+        
+    });
+    return newQ;
 
 }
 /* 
