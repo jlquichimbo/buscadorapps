@@ -151,9 +151,22 @@ p.footer {
     background-color:#f4f4f4;
 }
 .timeline-footer p { margin-bottom: 0; }
+.timeline-footer i {padding-left:27em }
+.timeline-footer img {
+    padding-left:2em }
+.timeline-footer img:hover {
+    -webkit-transform:scale(1.3);
+    -moz-transform:scale(1.3);
+    -ms-transform:scale(1.3);
+    -o-transform:scale(1.3);
+    transform:scale(1.3);
+}
+.timeline-footer span { margin-bottom: 0; }
 .timeline-footer > a {
     cursor: pointer;
     text-decoration: none;
+    color: #0077b3;
+    font-weight: bold;
 }
 .timeline > li.timeline-inverted {
     float: right;

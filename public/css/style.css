@@ -141,6 +141,22 @@ h5{
 /*BUTTON style
 ===========================*/
 
+.btn-container-admin a{
+    border-radius: 0px;
+    text-transform: uppercase;
+    background: transparent;
+    color: #0077b3;
+    padding: 14px 34px;
+    font-weight: 700;
+    border: 1px solid#0077b3;
+    line-height: 55px;
+}
+.btn-container-admin a:hover,.btn-container a.active{
+    color: black;
+    background: transparent;
+    border-color:black ;
+    font-weight: 700;
+}
 .btn-container a{
     border-radius: 0px;
     text-transform: uppercase;

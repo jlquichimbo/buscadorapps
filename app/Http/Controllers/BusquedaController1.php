@@ -3,33 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Authenticatable;
-use DB;
-use Illuminate\Support\Facades\Auth;
 
-
-class BusquedaController extends Controller {
-
+class BusquedaController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $keywords = DB::table('keywords')->lists('id', 'nombre');
-        $keywords['-1'] = 'Seleccionar';
-        return view('index', ['keywords' => $keywords]);
+    public function index()
+    {
+        return view('index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for suscribe a new user
+     * 
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        //
+    public function suscribe()
+    {
+        return view('suscribe');
+    }
+    /**
+     * Show the form for suscribe a new user
+     * 
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact()
+    {
+        return view('contact');
     }
 
     /**
@@ -38,18 +46,9 @@ class BusquedaController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        // Validate the request...
-
-        $busqueda = new \App\Busqueda;
-
-        $busqueda->busqueda = $request->q;
-        $busqueda->user_id = $request->user_id;
-        $busqueda->keyword_id = $request->keyword_id;
-        $busqueda->num_resultados = $request->num_results;
-
-        $busqueda->save();
-        return $busqueda;
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -58,7 +57,8 @@ class BusquedaController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -68,7 +68,8 @@ class BusquedaController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         //
     }
 
@@ -79,7 +80,8 @@ class BusquedaController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         //
     }
 
@@ -89,8 +91,8 @@ class BusquedaController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         //
     }
-
 }

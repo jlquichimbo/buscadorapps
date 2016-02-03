@@ -307,9 +307,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main Footer -->
             <footer class="main-footer">
                 <!-- To the right -->
-<!--                <div class="pull-right hidden-xs">
-                    Gracias por usar mi buscador
-                </div>-->
+                <!--                <div class="pull-right hidden-xs">
+                                    Gracias por usar mi buscador
+                                </div>-->
                 <!-- Default to the left -->
                 <div class="copyright text-center white col-md-12">
                     <p>&copy; Designed and developed by 
@@ -399,7 +399,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {!!Html::script('assets/js/app.min.js')!!}
 
         {!!Html::script('js/planes.js')!!}
-
+        <!-- PAGINADOR-->
+        {!!Html::script('js/bootstrap-paginator.js')!!}
+        {!!Html::script('js/pagination.js')!!}
 
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.

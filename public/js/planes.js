@@ -13,18 +13,20 @@ $('.btnSearch').on('click', function (event) {
     keywords_val = $('#keywordSelect').val();
     author_val = $('#authorInput').val();
     contains_val = $('#containsInput').val();
+    isLogged = $('#hidden_logged').val();
+    isPage = 0;
     q = search_text;
     keywords = keywords_val;
     author = author_val;
     contains = contains_val;
 
     event.preventDefault();//Para que no redirecciones a otro lado
-    searchPlanes(q, 0, keywords, author, contains, 0);
+    searchPlanes(q, 0, keywords, author, contains, isPage, isLogged);
 });
 
-function searchPlanes(q, start, keywords, author, contains, isPage) {
+function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
     $('.loader').show();
-    url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start;
+    url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start + '&rows=1';
     if (keywords != -1) {
         keyword = $('#keywordSelect').children(':selected').text();
 //        escapeCharsKeywords(q);
@@ -39,6 +41,11 @@ function searchPlanes(q, start, keywords, author, contains, isPage) {
     }
     if (contains) {
         alert('content sent');
+    }
+    if (isLogged) {
+        userId = $('#user_id').val();
+        console.log(userId);
+        saveBusqueda(q, keywords, userId);
     }
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
@@ -102,7 +109,10 @@ function searchPlanes(q, start, keywords, author, contains, isPage) {
                     timeline += '           </div>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-footer col-md-12">';
-                    timeline += '           <p>' + keyWords.periodo + '</p>';
+                    timeline += '           <p class="col-md-10">' + keyWords.periodo + '</p>';
+                    if (isLogged) {
+                        timeline += '           <a><img class="col-md-2" src="images/star.png"/></a>';
+                    }
                     timeline += '       </div>';
                     timeline += '   </div>';
                     timeline += '</li>';
@@ -128,7 +138,10 @@ function searchPlanes(q, start, keywords, author, contains, isPage) {
                     timeline += '           </div>';
                     timeline += '       </div>';
                     timeline += '       <div class="timeline-footer col-md-12">';
-                    timeline += '           <p>' + keyWords.periodo + '</p>';
+                    timeline += '           <p class="col-md-10">' + keyWords.periodo + '</p>';
+                    if (isLogged) {
+                        timeline += '           <a><img class="col-md-2" src="images/star.png"/></a>';
+                    }
                     timeline += '       </div>';
                     timeline += '   </div>';
                     timeline += '</li>';
@@ -139,8 +152,8 @@ function searchPlanes(q, start, keywords, author, contains, isPage) {
 
             //Enviamos la cadena html
 //            console.log(timeline);
-            document.getElementById("timeline_resultados").innerHTML = timeline;
-//            $('#timeline_resultados').prepend(timeline);
+//            document.getElementById("timeline_resultados").innerHTML = timeline;
+            $('#timeline_resultados').html(timeline);
 
             //Llamamos al paginador si no es llamado desde un cambio de pagina
             if (isPage != 1) {
@@ -215,22 +228,31 @@ function escapeCharsKeywords(string) {
     var symbols = ["+", "-", "&&", "||", "!", "(", ")", "{", "}", "[", "]", "^", '"', "~", "*", "?", ":", "/"];
     $.each(symbols, function (i, value) {
         index = string.indexOf(value);
-        if(index != -1){//si se encontro una ocurrencia en el string
-            newQ = string.replace(value, "+"+value+"+");//Agregamos los simbolos + para excapar los caracteres
+        if (index != -1) {//si se encontro una ocurrencia en el string
+            newQ = string.replace(value, "+" + value + "+");//Agregamos los simbolos + para excapar los caracteres
             console.log(newQ);
             return newQ;
-        }else{
+        } else {
             newQ = string;
         }
-        
+
     });
     return newQ;
 
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-
+function saveBusqueda(q, keywordId, userId, nResults){
+    $.ajax({ 
+        method: "POST", 
+        url: "busqueda/store", 
+        data: { q: q, keyword_id:keywordId, user_id:userId, num_results:nResults} ,
+        success: function (data, textStatus, jqXHR) {
+//            alert('Guardado '+data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('No se pudo guardar la busqueda del usuario');
+//            alert('Error al guardar');
+        }
+    });
+    
+}

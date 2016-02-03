@@ -40,30 +40,29 @@
                                             <div class="dropdown dropdown-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle wow bounceInRight" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                                                 <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-group">
-                                                            <label for="filter">Filter by</label>
-                                                            <select class="form-control">
-                                                                <option value="0" selected>All Snippets</option>
-                                                                <option value="1">Featured</option>
-                                                                <option value="2">Most popular</option>
-                                                                <option value="3">Top rated</option>
-                                                                <option value="4">Most commented</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="contain">Author</label>
-                                                            <input class="form-control" type="text" />
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="contain">Contains the words</label>
-                                                            <input class="form-control" type="text" />
-                                                        </div>
-                                                        <button   type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                                    </form>
+                                                    {!!Form::open(['method'=>'POST', 'class'=>'form-horizontal', 'role'=>'form'])!!}
+                                                    <!--<form class="form-horizontal" role="form">-->
+                                                    <div class="form-group">
+                                                        {!!Form::label('Filtrar por')!!}
+                                                        {!!Form::select('keyword', $keywords, -1, array('class' => 'form-control','id' => 'keywordSelect'))!!}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {!!Form::label('Autor')!!}
+                                                        {!!Form::text('author', null, ['class'=>'form-control','id' => 'authorInput'])!!}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        {!!Form::label('Contiene las palabras')!!}
+                                                        {!!Form::text('contains', null, ['class'=>'form-control','id' => 'containsInput'])!!}
+                                                        <input type="hidden" id="hidden_logged" name="hidden_logged" value="1">
+                                                        <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                                                    </div>
+                                                    <!--{!!Form::submit('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>', ['btn btn-primary btnSearch'])!!}-->
+                                                    <button   type="submit" class="btn btn-primary btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                                    <!--</form>-->
+                                                    {!!Form::close()!!}
                                                 </div>
                                             </div>
-                                            <button id="btnSearch"  type="button" class="btn btn-primary submit-input wow bounceInRight"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                            <button id="btnSearch"  type="button" class="btn btn-primary submit-input wow bounceInRight btnSearch"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -72,6 +71,12 @@
                     </div>
                 </div>
                 <!--end busqueda-->
+                <!--div de loading-->
+                <div class="loader">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <!--div de resultados-->
                 <div id="timeline_resultados" align='LEFT'></div>
                 <!--fin div resultados-->
@@ -84,7 +89,7 @@
                 <!--div paginador-->
                 <div id="pagination_div" align='center'></div>
                 <!--fin div resultados-->
-                <div class="btn-container m60 col-md-12" align="center">
+                <div class="m60 col-md-12 btn-container-admin" align="center">
                     <a href="#" class="active wow fadeInLeft">home</a>
                     <a href="suscribe" class=" wow fadeInLeft">Suscríbete</a>
                     <a href="contact" class="wow fadeInRight">Contáctanos</a>

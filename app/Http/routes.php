@@ -13,6 +13,7 @@
 
 Route::get('busqueda', function () {
     $keywords = DB::table('keywords')->lists('id', 'nombre');
+    $keywords['-1'] = 'Seleccionar';
     return view('index', ['keywords' => $keywords]);
 });
 Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::get('/', function () {
 });
 Route::get('index', function () {
     $keywords = DB::table('keywords')->lists('nombre', 'id');
+        $keywords['-1'] = 'Seleccionar';
     return view('index', ['keywords' => $keywords]);
 });
 Route::get('suscribe', function () {
@@ -37,6 +39,7 @@ Route::get('createuser', function () {
 //Referenciando a controlador
 //Route::get('name/{nombre}', 'PruebaController@nombre');
 Route::resource('busqueda', 'BusquedaController');
+Route::post('busqueda/store', 'BusquedaController@store');
 Route::resource('usuario', 'UsuarioController');
 //Route::resource('login', 'LoginController');
 
