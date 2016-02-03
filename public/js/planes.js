@@ -3,9 +3,11 @@ q = '';
 keywords = '';
 author = '';
 contains = '';
+busquedaId = '';
 
+/*Clic en boton buscar*/
 $('.btnSearch').on('click', function (event) {
-    console.log('extrayendo datos');
+    console.log('Extrayendo datos');
 //    document.getElementById('timeline_resultados').focus();
 //    $( "#timeline_resultados" ).focus();
 
@@ -42,11 +44,7 @@ function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
     if (contains) {
         alert('content sent');
     }
-    if (isLogged) {
-        userId = $('#user_id').val();
-        console.log(userId);
-        saveBusqueda(q, keywords, userId);
-    }
+
     $.ajax({
 //        url: 'http://j4loxa.com/serendipity/plan/browse?q=' + search_text + '&fq=keywords:Abr/2105+-+Ago/2015&wt=json&rows=12',
         url: url,
@@ -80,6 +78,12 @@ function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
             $('#segundos_search').text(segundosSearch);
             $('#nResults').text('Se han encontrado ' + nResults + ' resultados en ' + timeResults + ' milisegundos.');
 
+            //Grabamos la busqueda del usuario logueado
+            if (isLogged) {
+                userId = $('#user_id').val();
+//                console.log(userId);
+                saveBusqueda(q, keywords, userId);
+            }
             //Foreach para recorrer los datos
             var i = 1;
             $.each(data.response.docs, function (k, v) {
@@ -111,7 +115,8 @@ function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
                     timeline += '       <div class="timeline-footer col-md-12">';
                     timeline += '           <p class="col-md-10">' + keyWords.periodo + '</p>';
                     if (isLogged) {
-                        timeline += '           <a><img class="col-md-2" src="images/star.png"/></a>';
+                        timeline += '           <a class="bookmarkItem"  idResult="' + v.id + '" onclick="saveBookmark(\'' + v.id + '\')">';
+                        timeline += '           <img class="col-md-2" src="images/star.png"/></a>';
                     }
                     timeline += '       </div>';
                     timeline += '   </div>';
@@ -173,7 +178,7 @@ function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
 function getNewPage(pageNumber) {
 
     start = (pageNumber * 10) - 10;
-    console.log(pageNumber);
+//    console.log(pageNumber);
 //    console.log(start);
     searchPlanes(q, start, keywords, author, contains, 1);
 }
@@ -230,7 +235,6 @@ function escapeCharsKeywords(string) {
         index = string.indexOf(value);
         if (index != -1) {//si se encontro una ocurrencia en el string
             newQ = string.replace(value, "+" + value + "+");//Agregamos los simbolos + para excapar los caracteres
-            console.log(newQ);
             return newQ;
         } else {
             newQ = string;
@@ -241,11 +245,31 @@ function escapeCharsKeywords(string) {
 
 }
 
-function saveBusqueda(q, keywordId, userId, nResults){
-    $.ajax({ 
-        method: "POST", 
-        url: "busqueda/store", 
-        data: { q: q, keyword_id:keywordId, user_id:userId, num_results:nResults} ,
+function saveBusqueda(q, keywordId, userId) {
+    $.ajax({
+        method: "POST",
+        url: "busqueda/store",
+        data: {q: q, keyword_id: keywordId, user_id: userId, num_results: totalResults},
+        success: function (data, textStatus, jqXHR) {
+            busquedaId = data;
+//            console.log('Busqueda: '+busquedaId);
+//            alert('Guardado '+data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('No se pudo guardar la busqueda del usuario');
+//            alert('Error al guardar');
+        }
+    });
+
+}
+
+function saveBookmark(resultId){
+//    resultId = $(this).attr('idresult').val();
+//    console.log('Result: '+resultId);
+    $.ajax({
+        method: "POST",
+        url: "busqueda/storeBookmark",
+        data: {busqueda_id: busquedaId, result_id: resultId},
         success: function (data, textStatus, jqXHR) {
 //            alert('Guardado '+data);
         },

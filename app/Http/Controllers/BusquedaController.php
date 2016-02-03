@@ -49,7 +49,25 @@ class BusquedaController extends Controller {
         $busqueda->num_resultados = $request->num_results;
 
         $busqueda->save();
-        return $busqueda;
+        return $busqueda->id;
+    }
+    /**
+     * Store a newly bookmark created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeBookmark(Request $request) {
+        // Validate the request...
+
+        $resultado = new \App\Resultados;
+
+        $resultado->busqueda_id = $request->busqueda_id;
+        $resultado->result_id = $request->result_id;
+        $resultado->favorito = 1;
+
+        $resultado->save();
+        return $resultado->id;
     }
 
     /**

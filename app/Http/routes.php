@@ -40,6 +40,7 @@ Route::get('createuser', function () {
 //Route::get('name/{nombre}', 'PruebaController@nombre');
 Route::resource('busqueda', 'BusquedaController');
 Route::post('busqueda/store', 'BusquedaController@store');
+Route::post('busqueda/storeBookmark', 'BusquedaController@storeBookmark');
 Route::resource('usuario', 'UsuarioController');
 //Route::resource('login', 'LoginController');
 
