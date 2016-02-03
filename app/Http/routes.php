@@ -67,4 +67,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('social/callback/{provider?}', 'SocialController@getSocialAuthCallback');
     Route::get('admin', 'LoginController@index');
     Route::get('busquedas/{user_id}', 'BusquedaController@show');
+    Route::get('favoritos/{user_id}', 'BusquedaController@showBookmarks');
 });

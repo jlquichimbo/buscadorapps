@@ -9,7 +9,6 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
-
 class BusquedaController extends Controller {
 
     /**
@@ -21,9 +20,8 @@ class BusquedaController extends Controller {
 //        $keywords = DB::table('keywords')->lists('id', 'nombre');
 //        $keywords['-1'] = 'Seleccionar';
 //        return view('index', ['keywords' => $keywords]);
-        
-            return view('usuario.busquedas');
 
+        return view('usuario.busquedas');
     }
 
     /**
@@ -54,6 +52,7 @@ class BusquedaController extends Controller {
         $busqueda->save();
         return $busqueda->id;
     }
+
     /**
      * Store a newly bookmark created resource in storage.
      *
@@ -81,13 +80,26 @@ class BusquedaController extends Controller {
      */
     public function show($user_id) {
         //
-        
+
         $busquedas = DB::table('busquedas')
                 ->join('keywords', 'busquedas.keyword_id', '=', 'keywords.id')
                 ->select('keyword_id', 'busqueda', 'num_resultados', 'busquedas.created_at', 'keywords.nombre as keyword_name')
                 ->where('user_id', '=', $user_id)
                 ->get();
-        return view('usuario.busquedas', ['busquedas'=>$busquedas]);
+        return view('usuario.busquedas', ['busquedas' => $busquedas]);
+    }
+
+    public function showBookmarks($user_id) {
+        //
+
+        $favoritos = DB::table('resultados')
+                ->join('busquedas', 'busquedas.id', '=', 'resultados.busqueda_id')
+                ->join('keywords', 'busquedas.keyword_id', '=', 'keywords.id')
+                ->select('result_id', 'busquedas.busqueda', 'resultados.created_at', 'keywords.nombre as keyword_name')
+                ->where('user_id', '=', $user_id)
+                ->where('favorito', '=', 1)
+                ->get();
+        return view('usuario.favoritos', ['favoritos' => $favoritos]);
     }
 
     /**
