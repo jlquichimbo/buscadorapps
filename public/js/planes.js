@@ -28,7 +28,8 @@ $('.btnSearch').on('click', function (event) {
 
 function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
     $('.loader').show();
-    url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start + '&rows=1';
+//    $('.loader-logged').show();
+    url = 'http://j4loxa.com/serendipity/plan/browse?q=' + q + '&wt=json&start=' + start;
     if (keywords != -1) {
         keyword = $('#keywordSelect').children(':selected').text();
 //        escapeCharsKeywords(q);
@@ -54,6 +55,7 @@ function searchPlanes(q, start, keywords, author, contains, isPage, isLogged) {
         async: 'true',
         success: function (data) {
             $('.loader').hide();
+//            $('.loader-logged').hide();
 
             //Bajamos el scroll hacia los resultados
             $(window).scrollTop($('#timeline_resultados').offset().top);

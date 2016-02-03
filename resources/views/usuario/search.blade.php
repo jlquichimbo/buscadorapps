@@ -73,18 +73,18 @@
                 <!--end busqueda-->
                 <!--div de loading-->
                 <div class="loader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span style="background: black"></span>
+                    <span style="background: black"></span>
+                    <span style="background: black"></span>
                 </div>
                 <!--div de resultados-->
                 <div id="timeline_resultados" align='LEFT'></div>
                 <!--fin div resultados-->
                 <!--div de loading-->
                 <div class="loader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span style="background: black"></span>
+                    <span style="background: black"></span>
+                    <span style="background: black"></span>
                 </div>
                 <!--div paginador-->
                 <div id="pagination_div" align='center'></div>
