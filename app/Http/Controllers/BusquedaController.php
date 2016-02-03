@@ -18,9 +18,12 @@ class BusquedaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $keywords = DB::table('keywords')->lists('id', 'nombre');
-        $keywords['-1'] = 'Seleccionar';
-        return view('index', ['keywords' => $keywords]);
+//        $keywords = DB::table('keywords')->lists('id', 'nombre');
+//        $keywords['-1'] = 'Seleccionar';
+//        return view('index', ['keywords' => $keywords]);
+        
+            return view('usuario.busquedas');
+
     }
 
     /**
@@ -76,8 +79,15 @@ class BusquedaController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($user_id) {
         //
+        
+        $busquedas = DB::table('busquedas')
+                ->join('keywords', 'busquedas.keyword_id', '=', 'keywords.id')
+                ->select('keyword_id', 'busqueda', 'num_resultados', 'busquedas.created_at', 'keywords.nombre as keyword_name')
+                ->where('user_id', '=', $user_id)
+                ->get();
+        return view('usuario.busquedas', ['busquedas'=>$busquedas]);
     }
 
     /**

@@ -42,6 +42,7 @@ Route::resource('busqueda', 'BusquedaController');
 Route::post('busqueda/store', 'BusquedaController@store');
 Route::post('busqueda/storeBookmark', 'BusquedaController@storeBookmark');
 Route::resource('usuario', 'UsuarioController');
+
 //Route::resource('login', 'LoginController');
 
 //Social Login
@@ -65,4 +66,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('social/{provider?}', 'SocialController@getSocialAuth');
     Route::get('social/callback/{provider?}', 'SocialController@getSocialAuthCallback');
     Route::get('admin', 'LoginController@index');
+    Route::get('busquedas/{user_id}', 'BusquedaController@show');
 });

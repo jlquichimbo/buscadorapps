@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <header class="main-header">
 
                 <!-- Logo -->
-                <a href="index2.html" class="logo">
+                <a href="../admin" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><b>A</b>LT</span>
                     <!-- logo for regular state and mobile devices -->
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <li class="header">MEN&Uacute;</li>
                         <!-- Optionally, you can add icons to the links -->
                         <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Favoritos</span></a></li>
-                        <li><a href="#"><i class="fa fa-link"></i> <span>Busquedas recientes</span></a></li>
+                        <li><a href="busquedas/{{Auth::user()->id}}"><i class="fa fa-link"></i> <span>Busquedas recientes</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
