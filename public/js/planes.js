@@ -271,6 +271,9 @@ function saveBookmark(resultId){
         url: "busqueda/storeBookmark",
         data: {busqueda_id: busquedaId, result_id: resultId},
         success: function (data, textStatus, jqXHR) {
+            $(".alert-success").append('Se ha agregado a favoritos')
+            $(".alert-success").show(1000);
+            setTimeout(function() { $(".alert-success").hide(1000); }, 5000);
 //            alert('Guardado '+data);
         },
         error: function (jqXHR, textStatus, errorThrown) {

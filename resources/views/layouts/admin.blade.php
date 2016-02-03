@@ -297,7 +297,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Main content -->
                 <section class="content">
+                    <div class="alert alert-success" style="display: none">
+                        <strong>Listo!</strong>
+                    </div>
                     @yield('content')
+                    <div class="alert alert-success" style="display: none">
+                        <strong>Listo!</strong>
+                    </div>
 
                     <!-- Your Page Content Here -->
 
